@@ -1,6 +1,7 @@
 package com.example.via.controller;
 
 import com.example.via.model.BusIncidentsResponse;
+import com.example.via.model.RailIncidentsResponse;
 import com.example.via.service.ViaService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,8 +19,13 @@ public class ViaController {
     }
 
     @GetMapping("/busincidents")
-    public Mono<BusIncidentsResponse> schedule(){
+    public Mono<BusIncidentsResponse> getBusIncidents(){
         return viaService.busIncidents();
+    }
+
+    @GetMapping("/railincidents")
+    public Mono<RailIncidentsResponse> getRailIncidents(){
+        return viaService.railIncidents();
     }
 
 }

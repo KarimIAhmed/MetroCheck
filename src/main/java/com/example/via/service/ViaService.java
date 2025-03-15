@@ -1,6 +1,7 @@
 package com.example.via.service;
 
 import com.example.via.model.BusIncidentsResponse;
+import com.example.via.model.RailIncidentsResponse;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -28,14 +29,14 @@ public class ViaService {
                 .bodyToMono(BusIncidentsResponse.class);
     }
 
-    public Mono<String> railIncidents(){
+    public Mono<RailIncidentsResponse> railIncidents(){
         return webClient.get()
                 .uri(uriBuilder -> uriBuilder
                     .path("/Incidents.svc/json/Incidents")
                     .queryParam("api_key",apiKey)
                     .build())
                 .retrieve()
-                .bodyToMono(String.class);
+                .bodyToMono(RailIncidentsResponse.class);
     }
 
 }
